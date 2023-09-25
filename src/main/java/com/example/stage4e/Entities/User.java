@@ -1,13 +1,12 @@
 package com.example.stage4e.Entities;
 
-import com.example.stage4e.Auth.Code;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +42,7 @@ public class User implements UserDetails {
 
 
 
+        @JsonIgnore
         @OneToMany(mappedBy = "user")
         private List<Token> tokens;
 
@@ -63,8 +63,15 @@ public class User implements UserDetails {
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "createdBy")
     List<CampingPlace> campingPlaces;
 
+    @JsonIgnore
     @OneToMany(cascade= CascadeType.ALL, mappedBy = "bookedBy")
     List<Booking> bookings;
+
+    @OneToMany(mappedBy="openedBy", cascade = CascadeType.ALL)
+     List<Store> stores;
+
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratings;
 
 
     @Override

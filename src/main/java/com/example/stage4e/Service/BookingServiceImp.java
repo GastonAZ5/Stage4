@@ -1,8 +1,6 @@
 package com.example.stage4e.Service;
 
-import com.example.stage4e.Entities.Booking;
-import com.example.stage4e.Entities.CampingPlace;
-import com.example.stage4e.Entities.User;
+import com.example.stage4e.Entities.*;
 import com.example.stage4e.Interfaces.BookingServiceInterface;
 import com.example.stage4e.Repository.BookingRepository;
 import com.example.stage4e.Repository.CampingPlaceRepository;
@@ -71,6 +69,8 @@ public class BookingServiceImp implements BookingServiceInterface {
         return date ;
     }
 
+
+    public List<Booking> getAllBooking() {return bookingRepository.findAll();}
 
 
 }

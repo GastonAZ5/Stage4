@@ -1,10 +1,8 @@
 package com.example.stage4e.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Booking implements Serializable {
 
     @Id
@@ -33,6 +32,7 @@ public class Booking implements Serializable {
 
 
 
+    @JsonIgnore
     @ManyToOne
     private User bookedBy;
 

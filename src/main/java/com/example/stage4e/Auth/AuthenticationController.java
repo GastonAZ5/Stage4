@@ -48,10 +48,6 @@ public class AuthenticationController {
     }
 
 
-
-
-
-
     @PostMapping("/checkByEmail")
     public AccountResponse resetPasswordEmail(@RequestBody Person person){
         Boolean result;
