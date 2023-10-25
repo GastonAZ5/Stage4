@@ -37,4 +37,7 @@ public class CampingPlaceServiceImp implements CampingPlaceServiceInterface {
         }
     }
 
+
+    // suppression + modification affichage avec role admin(suppression + modif)
+
 }

@@ -44,11 +44,20 @@ public class BookingController {
     }
 
     @GetMapping("/getOneBooking/{idBooking}")
-    public ResponseEntity getOneBooking(@PathVariable Integer idBooking) throws WriterException, IOException {
+    public ResponseEntity<?> getOneBooking(@PathVariable Integer idBooking) throws WriterException, IOException {
         Booking booking =bookingRepository.getById(idBooking);
         System.out.println(booking);
         QRCodeGenerator.generateQRCode (booking);
         return new ResponseEntity<>(booking,HttpStatus.valueOf(200));
     }
 
+    @PutMapping("/update/{idBooking}/{idCamp}")
+    public ResponseEntity<?> updateBooking(@RequestBody Booking booking, @PathVariable Integer idBooking,@PathVariable Integer idCamp){
+        return new ResponseEntity<>(bookingServiceImp.UpdateBooking(booking,idBooking,idCamp),HttpStatus.valueOf(200));
+    }
+
+    @DeleteMapping("/delete/{idBooking}")
+    public ResponseEntity<?> deleteBooking(@PathVariable Integer idBooking){
+        return new ResponseEntity<>(bookingServiceImp.DeleteBooking(idBooking),HttpStatus.valueOf(200));
+    }
 }

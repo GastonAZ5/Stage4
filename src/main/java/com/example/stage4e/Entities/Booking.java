@@ -38,5 +38,6 @@ public class Booking implements Serializable {
 
 
     @ManyToOne
+    @JsonIgnore
     private CampingPlace bookedIn;
 }

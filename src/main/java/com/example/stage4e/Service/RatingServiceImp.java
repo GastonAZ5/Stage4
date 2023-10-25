@@ -113,4 +113,6 @@ public class RatingServiceImp implements RatingServiceInterface {
         return ratingRepository.countRatingsByProduct(product);
     }
 
+    //suppression + edit
+
 }

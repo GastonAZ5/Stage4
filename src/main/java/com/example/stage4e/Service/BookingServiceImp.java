@@ -72,5 +72,47 @@ public class BookingServiceImp implements BookingServiceInterface {
 
     public List<Booking> getAllBooking() {return bookingRepository.findAll();}
 
+    public String DeleteBooking(Integer idBooking, Integer idCamp){
+        Booking bk = bookingRepository.findById(idBooking).get();
+        CampingPlace cms= campingPlaceRepository.findById(idCamp).get();
+        cms.setPlaceDispo(bk.getPlaces());
+        bookingRepository.deleteById(bk.getBookingId());
+        campingPlaceRepository.save(cms);
+        return "Booking deleted successfully";
+    }
+
+    public String DeleteBooking(Integer idBooking){
+        Boolean x = false;
+
+        if(bookingRepository.findById(idBooking).isPresent())
+        x=true;
+
+        if(x==true)
+        {
+            bookingRepository.deleteById(idBooking);
+            return "Booking deleted successfully";
+        }
+        else
+            return "Booking does not exist";
+    }
+
+    public String UpdateBooking(Booking booking, Integer idBooking, Integer idCamp){
+        Booking bk = bookingRepository.findById(idBooking).get();
+        CampingPlace cms= campingPlaceRepository.findById(idCamp).get();
+        Integer x =cms.getPlaceDispo();
+        if (booking.getPlaces()<=x){
+            bk=booking;
+            bookingRepository.save(bk);
+            cms.setPlaceDispo(x-bk.getPlaces());
+            campingPlaceRepository.save(cms);
+
+            return "Booking updated successfully";
+        }else{
+            NearestCheckOut();
+            return "There is no more places to be booked in " +cms.getName() + " But you can Book after " + NearestCheckOut();
+        }
+    }
+
+
 
 }

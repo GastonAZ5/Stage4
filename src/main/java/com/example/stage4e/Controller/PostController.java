@@ -22,7 +22,7 @@ public class PostController {
         return new ResponseEntity<>(postServiceImp.addPost(IdUser, post), HttpStatus.valueOf(200));
     }
 
-    @PostMapping("/updatePost/{idPost}/{idUser}")
+    @PutMapping("/updatePost/{idPost}/{idUser}")
     public ResponseEntity<?> updatePost(@RequestBody Post post,@PathVariable Integer idPost,@PathVariable Integer idUser) {
         return new ResponseEntity<>(postServiceImp.updatePost(post,idPost,idUser), HttpStatus.valueOf(200));
     }

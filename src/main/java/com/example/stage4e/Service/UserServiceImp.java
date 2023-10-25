@@ -98,15 +98,7 @@ public class UserServiceImp implements UserDetailsService, UserServiceInterface 
 
 
 }
-//    @Override
-//    public List<User> findAdmins(){
-//        List<User> list = userRepository.findAll();
-//        List<User> admins = list.stream()
-//                .filter(user -> "ADMIN".equals(user.getRole()))
-//                .collect(Collectors.toList());
-//
-//            return admins;
-//    }
+
 
 
 

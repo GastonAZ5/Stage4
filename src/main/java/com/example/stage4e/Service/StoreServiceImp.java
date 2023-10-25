@@ -29,4 +29,7 @@ public class StoreServiceImp implements StoreServiceInterface {
         return "Store Created succesfuly";
     }
 
+
+    //suppresion edit + affichage
+
 }
